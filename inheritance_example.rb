@@ -1,6 +1,11 @@
 class Vehicle
-  def initialize
-    @speed = 0
+  def initialize(vehicle_hash)
+    @fuel = vehicle_hash[:fuel]
+    @make = vehicle_hash[:make]
+    @model = vehicle_hash[:model]
+    @speed = vehicle_hash[:speed]
+    @type = vehicle_hash[:type]
+    @weight = vehicle_hash[:weight]
     @direction = 'north'
   end
 
@@ -26,8 +31,8 @@ class Vehicle
 end
 
 class Car < Vehicle
-  def initialize
-    super
+  def initialize(vehicle_hash)
+    super(vehicle_hash)
     @gas = 10
   end
 
@@ -37,17 +42,21 @@ class Car < Vehicle
 end
 
 class Bike < Vehicle
+  def initialize(vehicle_hash)
+    super(vehicle_hash)
+  end
+
   def ring_bell
     puts "Ring ring!"
   end
 end
 
-bike = Bike.new
+bike = Bike.new({speed: 10, type: "Schwinn", weight: "20lbs"})
 bike.ring_bell
 bike.accelerate
 bike.show_speed
 
-car = Car.new
+car = Car.new({fuel: "diesel", make: "honda", model: "civic"})
 car.honk_horn
 car.turn("South")
 car.show_direction
