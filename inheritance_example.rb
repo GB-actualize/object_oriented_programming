@@ -26,6 +26,11 @@ class Vehicle
 end
 
 class Car < Vehicle
+  def initialize
+    super
+    @gas = 10
+  end
+
   def honk_horn
     puts "Beeeeeeep!"
   end
@@ -44,5 +49,5 @@ bike.show_speed
 
 car = Car.new
 car.honk_horn
-car.turn("south")
+car.turn("South")
 car.show_direction
